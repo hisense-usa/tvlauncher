@@ -30,10 +30,10 @@ $(document).on("keydown", function (e) {
 });
 
 function getTimeStamp() {
-  return Math.floor(new Date().valueOf() / 1000);
+  return Math.floor(new Date().valueOf() / 100) / 10;
 }
 
 function reportUsage() {
-  parent.logUsage(window.location.pathname.substring(1).split('/').pop(), usageData, getTimeStamp() - t0, getQueryParams().type);
+  parent.logUsage(window.location.pathname.substring(1).split('/').pop(), usageData, Math.floor((getTimeStamp() - t0) * 10) / 10, getQueryParams().type);
   // alert("asdfas");
 }
