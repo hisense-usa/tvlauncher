@@ -108,7 +108,7 @@ function proceedToNextTest() {
         }
 
       }
-      window.location.replace("survey2.html" + paramString);
+      window.location.replace("survey2.html" + paramString + "&ua=" + encodeURIComponent(navigator.userAgent));
   } else {
     if (currentTypeIndex >= testTypes.length - 1) {
       currentTestIndex++;

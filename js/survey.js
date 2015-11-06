@@ -31,6 +31,10 @@ var fieldMapping = [
   {
     type: "2dvi",
     fieldId: "entry_58791075",
+  },
+  {
+    type: "ua",
+    fieldId: "entry_1520005385",
   }
 
 ];
