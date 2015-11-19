@@ -5,6 +5,9 @@ $(document).on("keydown", function (e) {
     //console.log("Try Move focus: keyup " + e);
     var focusedId = $(':focus').attr('id');
     var focusable = dPadNav.getFocusable(focusedId);
+    if (typeof focusable === "undefined") {
+      focusable = dPadNav.getFocusable(dPadNav.currentFocusedId);
+    }
     console.log("src offset: " + focusable.offset.left + ", " + focusable.offset.top);
     switch (e.keyCode) {
         case 39: // Right
@@ -38,6 +41,7 @@ $(document).on("keydown", function (e) {
         default:
             break;
     }
+    dPadNav.currentFocusedId = $(':focus').attr("id");
 });
 
 dPadNav.focusables = [];
@@ -206,6 +210,8 @@ dPadNav.scanFocusables = function(selector, scope, preference) {
         dPadNav.focusables.push(focusableToAdd);
 
     });
+
+    dPadNav.currentFocusedId = dPadNav.focusables[0].id;
 }
 
 dPadNav.overrideMovement = function(idSource, direction, idTarget) {
